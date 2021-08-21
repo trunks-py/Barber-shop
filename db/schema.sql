@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS barberShop_db;
+CREATE DATABASE BarberShop_db;
