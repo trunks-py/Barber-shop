@@ -4,7 +4,6 @@
 We are the owner of a barber shop and we need to have a way for the owner to keep track of services offered and provided by employees.  
 
 
-
 ## Initial Work Distribution
 - HTML / CSS - Salvador
 - Routes - Jim
@@ -71,6 +70,11 @@ User Table
     Employee ID (foreign key)
 
 Client Table (nice to have)
+    ID (PK)
+    Client first name
+    Client last name
+    Client phone number
+    Client Table (nice to have)
     ID (PK)
     Client first name
     Client last name
