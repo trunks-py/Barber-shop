@@ -74,3 +74,8 @@ Client Table (nice to have)
     Client first name
     Client last name
     Client phone number
+    Client Table (nice to have)
+    ID (PK)
+    Client first name
+    Client last name
+    Client phone number
