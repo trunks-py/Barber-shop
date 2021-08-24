@@ -67,7 +67,6 @@ User Table
     First Name
     Last Name
     Password (bcrypt)
-    Employee ID (foreign key)
 
 Client Table (nice to have)
     ID (PK)
