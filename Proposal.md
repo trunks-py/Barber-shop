@@ -63,7 +63,7 @@ Activity Table
 
 User Table
     ID (PK)
-    Username
+    email
     First Name
     Last Name
     Password (bcrypt)
