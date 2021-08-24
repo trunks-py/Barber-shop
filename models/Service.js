@@ -15,10 +15,6 @@ Service.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-    },
-    
     price: {
       type: DataTypes.FLOAT,
       allowNull: false,
