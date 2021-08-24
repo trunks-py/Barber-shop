@@ -2,13 +2,23 @@ const User = require('./User');
 const Activity = require('./Activity');
 const Service = require('./Service');
 
-// User.hasMany(Article, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// });
+User.hasMany(Activity, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// Article.belongsTo(User, {
-//   foreignKey: 'user_id'
-// });
+Activity.belongsTo(User, {
+  foreignKey: 'user_id'
+});
 
-module.exports = { User, Activity. Service };
+Service.hasMany(Activity, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+  });
+  
+  Activity.belongsTo(Service, {
+    foreignKey: 'user_id'
+  });
+  
+
+module.exports = { User, Activity, Service };

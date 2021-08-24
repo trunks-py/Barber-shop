@@ -57,7 +57,7 @@ Services Table
 Activity Table
     ID (PK)
     Service ID (foreign key)
-    Employee ID (foreign key)
+    User ID (foreign key)
     Date (auto-timestamp)
     Client ID (foreign key) (nice to have)
 
