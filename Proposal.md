@@ -78,3 +78,17 @@ Client Table (nice to have)
     Client first name
     Client last name
     Client phone number
+
+## Page design
+
+### Entry
+Start at log in page  
+* text entry box for email and password and submit button
+* also create new user
+    email
+    first name
+    last name
+    password
+
+* Home page
+    Links or buttons for 

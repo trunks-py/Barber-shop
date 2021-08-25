@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS barberShop_db;
+DROP DATABASE IF EXISTS BarberShop_db;
 CREATE DATABASE BarberShop_db;
