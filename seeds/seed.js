@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { User, Article } = require('../models');
+const { User, Service, Activity  } = require('../models');
 
 const userData = require('./userData.json');
 const serviceData = require('./serviceData.json');
@@ -13,6 +13,8 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+const service = await Service.bulkCreate(serviceData);
+const activity = await Activity.bulkCreate(activityData);
 
 //Assigns random users to something......
 

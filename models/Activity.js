@@ -1,3 +1,4 @@
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 class Activity extends Model {}
 
@@ -15,11 +16,6 @@ Activity.init(
           model: 'service',
           key: 'id',
       }
-  },
-  date_created: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW,
   },
   user_id: {
       type: DataTypes.INTEGER,
