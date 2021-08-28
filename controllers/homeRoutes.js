@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    return res.redirect("/profile");
+    return res.redirect("/homepage");
   }
   res.render("login");
 });
