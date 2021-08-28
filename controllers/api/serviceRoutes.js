@@ -6,3 +6,5 @@ const { Service } = require("../../models");
 
 //     } catch (err)
 // });
+
+module.exports = router;

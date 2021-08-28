@@ -6,15 +6,8 @@ const withAuth = require("../utils/auth");
 // Prevent non logged in users from viewing the homepage
 router.get("/", async (req, res) => {
   try {
-    const projectData = await Project.findAll({
-      order: [["date_created", "ASC"]],
-    });
-
-    const projects = projectData.map((project) => project.get({ plain: true }));
-
-    res.render("homepage", {
-      projects,
-    });
+  
+    res.render('homepage');
     // res.status(200).json(projects);
   } catch (err) {
     res.status(500).json(err);
@@ -23,9 +16,10 @@ router.get("/", async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    return res.redirect("/homepage");
+    return res.redirect('/');
   }
   res.render("login");
 });
+
 
 module.exports = router;
