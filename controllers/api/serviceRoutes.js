@@ -1,5 +1,5 @@
-const router = require("express").Router();
-const { Service } = require("../../models");
+const router = require('express').Router();
+const { Service } = require('../../models');
 
 router.post("/", async (req, res) => {
   const { service_name, price } = req.body;
@@ -24,4 +24,5 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 module.exports = router;
