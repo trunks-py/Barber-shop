@@ -8,11 +8,11 @@ router.get('/', async (req, res) => {
 // TODO joining logic goes here.
     });
 
-    const users = userData.map((user) => user.get({ plain: true}));
 
-    res.render('activity', {users});
-    // res.status(200).json(projects);
+    res.status(200).json(projects);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+module.exports = router;
