@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const { Service } = require('../../models');
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   const { service_name, price } = req.body;
-  if (!service_name || !price)
-    throw new Error("You must provide a service name and a price");
+  if (!service_name && !price) {throw new Error('You must provide a service name and a price');}
   try {
     const newService = await Service.create({
       service_name,
@@ -16,10 +15,16 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const dbServices = await Service.findAll();
-    res.json(dbServices);
+
+    const services = dbServices.map((service) => service.get({ plain: true}));
+
+    res.render('service', {services});
+
+
+    // res.json(dbServices);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -47,6 +47,27 @@ const signupFormHandler = async (event) => {
   }
 };
 
+const delButtonHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/users/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/manageUsers');
+    } else {
+      alert('Failed to delete user');
+    }
+  }
+};
+
+
+document
+  .querySelector('.user-list')
+  .addEventListener('click', delButtonHandler);
+
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
