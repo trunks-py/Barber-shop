@@ -1,0 +1,50 @@
+<<div class="row">
+  {{#if services.length}}
+  <div class="col-md-6 user-list">
+    <h3>Current Services:</h3>
+
+    {{#each services as |service|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a {{service.id}}">{{service.id}} {{service.service_name}}: ${{service.price}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{user.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+   
+  <div class="col-md-6">
+    <h2>Create New Service</h2>
+
+    <form class="form service-form">
+      <div class="form-group">
+        <label for="service-name">New service name:</label>
+        <input class="form-input" type="text" id="service-name" />
+      </div>
+      <div class="form-group">
+        <label for="service_price">Price:</label>
+        <input class="form-input" type="text" id="service_price" />
+      </div>
+      
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">signup</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src='/public/js/service.js'></script> 
