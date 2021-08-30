@@ -1,9 +1,11 @@
-const router = require('express').Router();
-const { Service } = require('../../models');
+const router = require("express").Router();
+const { Service } = require("../../models");
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   const { service_name, price } = req.body;
-  if (!service_name && !price) {throw new Error('You must provide a service name and a price');}
+  if (!service_name && !price) {
+    throw new Error("You must provide a service name and a price");
+  }
   try {
     const newService = await Service.create({
       service_name,
@@ -15,16 +17,33 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const dbServices = await Service.findAll();
 
-    const services = dbServices.map((service) => service.get({ plain: true}));
+    const services = dbServices.map((service) => service.get({ plain: true }));
 
-    res.render('service', {services});
-
+    res.render("service", { services });
 
     // res.json(dbServices);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const serviceData = await Service.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!serviceData) {
+      res.status(404).json({ message: "No service found with this id" });
+      return;
+    }
+
+    res.status(200).json(serviceData);
   } catch (err) {
     res.status(500).json(err);
   }
