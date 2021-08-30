@@ -19,14 +19,11 @@ router.get('/', async (req, res) => {
   }
 });
 
+// this route works
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.destroy({
-      where: {
-        id: req.params.id, 
-        user_id: req.session.user_id,
-
-      },
+      where: { id: req.params.id },
     });
     if (!userData) {
       res.status(404).json({message: 'User not found'});
@@ -42,9 +39,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 
 
-
-
-// TODO create new user (FIX THIS)
+// this route works
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
