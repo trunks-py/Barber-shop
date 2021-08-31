@@ -13,17 +13,17 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-const service = await Service.bulkCreate(serviceData);
-const activity = await Activity.bulkCreate(activityData);
+  const service = await Service.bulkCreate(serviceData);
+  const activity = await Activity.bulkCreate(activityData);
 
-//Assigns random users to something......
+  //Assigns random users to something......
 
-//   for (const article of articleData) {
-//     await Article.create({
-//       ...article,
-//       user_id: users[Math.floor(Math.random() * users.length)].id,
-//     });
-//   }
+  //   for (const article of articleData) {
+  //     await Article.create({
+  //       ...article,
+  //       user_id: users[Math.floor(Math.random() * users.length)].id,
+  //     });
+  //   }
 
   process.exit(0);
 };
