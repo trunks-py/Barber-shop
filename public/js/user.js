@@ -32,7 +32,7 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/manageUsers');
+      document.location.replace('manageUsers');
     } else {
       alert('Failed to delete user');
     }
