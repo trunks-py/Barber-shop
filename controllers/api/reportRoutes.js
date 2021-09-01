@@ -47,6 +47,7 @@ router.delete("/:id", async (req, res) => {
         id: req.params.id,
       },
     });
+    console.log(activityData);
     if (!activityData) {
       res.status(404).json({ message: "No activity found with this id" });
       return;
