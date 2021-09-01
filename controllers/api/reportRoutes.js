@@ -1,30 +1,19 @@
-const router = require("express").Router();
-const { Activity, User, Service } = require("../../models");
-//const withAuth = require("../../utils/auth");
+const router = require('express').Router();
+const { Activity, User, Service } = require('../../models');
+// const withAuth = require("../../utils/auth");
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userData = await Activity.findAll({
-      include: [
-        {
-          model: Service,
-          where: { service_name: activity.service_id },
-          include: [
-            {
-              model: User,
-              where: {
-                state: activity.user_id,
-              },
-            },
-          ],
-        },
-      ],
-    });
+      include: [User, Service],
 
-    const projects = userData.get({ plain: true });
+    });
     console.log({ userData });
-    console.log({ projects });
-    res.status(200).json(projects);
+    const reports = userData.map(report => report.get({plain: true}));
+    // console.log({ reportData });
+
+    // res.status(200).json(reportData);
+    res.render("activity", { reports });
   } catch (err) {
     res.status(500).json(err);
   }
