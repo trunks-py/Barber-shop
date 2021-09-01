@@ -6,8 +6,8 @@ router.get('/', async (req, res) => {
   try {
     const userData = await Activity.findAll({
       include: [User, Service],
-    });
-    console.log({ userData });
+     });
+    //console.log({ userData });
     const reports = userData.map((report) => report.get({ plain: true }));
 
     const allUserData = await User.findAll();
