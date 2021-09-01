@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
       service_id,
       user_id,
     });
-    console.log({ newActivity });
+    // console.log({ newActivity });
     res.status(200).json(newActivity);
   } catch (err) {
     res.status(400).json(err);
