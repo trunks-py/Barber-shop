@@ -20,3 +20,24 @@ const addActivity = async (event) => {
 };
 
 document.querySelector('.activity-form').addEventListener('submit', addActivity);
+
+
+const onDelete = async (e) => {
+  const {id} = e.target;
+  const response = await fetch(`/api/reports/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    document.location.replace('/api/reports');
+  } else {
+    alert('Failed to delete');
+  }
+};
+
+const deleteButtonsArr = document.querySelectorAll('.delete-button');
+
+deleteButtonsArr.forEach((el) => {
+  el.addEventListener('click', onDelete);
+});
