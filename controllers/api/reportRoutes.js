@@ -5,26 +5,12 @@ const { Activity, User, Service } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const userData = await Activity.findAll({
-      include: [
-        {
-          model: Service,
-          where: { service_name: activity.service_id },
-          include: [
-            {
-              model: User,
-              where: {
-                state: activity.user_id,
-              },
-            },
-          ],
-        },
-      ],
+      include: [User, Service],
     });
-
-    const projects = userData.get({ plain: true });
-    console.log({ userData });
-    console.log({ projects });
-    res.status(200).json(projects);
+    const reportData = userData.map((x) => x.get({ plain: true }));
+    console.log(reportData);
+    res.render;
+    //res.status(200).json(reportData);
   } catch (err) {
     res.status(500).json(err);
   }
