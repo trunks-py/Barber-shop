@@ -1,5 +1,35 @@
-<h1>activity page</h1>
+<div class="col-md-6">
+    <h2>Record new Activity</h2>
 
+    <form class="form signup-form">
+      <div class="form-group">
+        <label for="first-name-signup">Select Service:</label>
+        <select>
+             {{#each services as |service|}}
+            <option value=>{{service_name}}</option>
+            {{/each}}
+        </select>
+        
+      </div>
+      <div class="form-group">
+        <label for="last-name-signup">Select user</label>
+      </div>
+      <select>
+       {{#each users as |user|}}
+            <option value=>{{last_name}}</option>
+            {{/each}}
+        </select>    
+            
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">signup</button>
+      </div>
+    </form>
+  </div>
+
+
+
+
+<div class="row">
   {{#each reports as |report|}}
     <div class="row mb-2">
       <div class="col-md-8">
@@ -10,9 +40,9 @@
       </div>
     </div>
     {{/each}}
-  </div>
 </div>
 
 
 
-<!-- <script src="/js/user.js"></script> -->
+
+<script src="/js/report.js"></script>

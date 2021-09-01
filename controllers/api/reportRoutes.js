@@ -10,10 +10,16 @@ router.get('/', async (req, res) => {
     });
     console.log({ userData });
     const reports = userData.map(report => report.get({plain: true}));
+
+    const allUserData = await User.findAll();
+    const users = allUserData.map(user => user.get({plain:true}));
+
+    const allServiceData = await Service.findAll();
+    const services = allServiceData.map(service => service.get({plain:true}));
     // console.log({ reportData });
 
     // res.status(200).json(reportData);
-    res.render("activity", { reports });
+    res.render("activity", { reports, users, services });
   } catch (err) {
     res.status(500).json(err);
   }
