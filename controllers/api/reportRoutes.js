@@ -16,4 +16,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    const { service_id, user_id } = req.body;
+    const newActivity = await Activity.create({
+      service_id,
+      user_id,
+    });
+    console.log({ newActivity });
+    res.status(200).json(newActivity);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;
