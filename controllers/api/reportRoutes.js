@@ -1,8 +1,8 @@
-const router = require("express").Router();
-const { Activity, User, Service } = require("../../models");
+const router = require('express').Router();
+const { Activity, User, Service } = require('../../models');
 // const withAuth = require("../../utils/auth");
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userData = await Activity.findAll({
       include: [User, Service],
@@ -20,13 +20,13 @@ router.get("/", async (req, res) => {
     // console.log({ reportData });
 
     // res.status(200).json(reportData);
-    res.render("activity", { reports, users, services });
+    res.render('activity', { reports, users, services });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { service_id, user_id } = req.body;
     const newActivity = await Activity.create({
@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const activityData = await Activity.destroy({
       where: {
@@ -49,7 +49,7 @@ router.delete("/:id", async (req, res) => {
     });
     console.log(activityData);
     if (!activityData) {
-      res.status(404).json({ message: "No activity found with this id" });
+      res.status(404).json({ message: 'No activity found with this id' });
       return;
     }
     res.status(200).json(activityData);
