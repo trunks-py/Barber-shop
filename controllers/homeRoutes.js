@@ -1,14 +1,15 @@
-const router = require("express").Router();
-const { Project, Service } = require("../models");
-//const getProjectsByUser = require('../utils/helpers');
+const router = require('express').Router();
+const { Project, Service, User } = require('../models');
+// const getProjectsByUser = require('../utils/helpers');
+const withAuth = require('../utils/auth');
 
-router.get("/services", async (req, res) => {
+router.get('/services', async (req, res) => {
   try {
     const dbServices = await Service.findAll();
 
     const services = dbServices.map((service) => service.get({ plain: true }));
 
-    res.render("service", { services });
+    res.render('service', { services });
 
     // res.json(dbServices);
   } catch (err) {
@@ -16,21 +17,19 @@ router.get("/services", async (req, res) => {
   }
 });
 
-// Prevent non logged in users from viewing the homepage
-router.get("/", async (req, res) => {
-  try {
-    res.render("homepage");
-    // res.status(200).json(projects);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+
+router.get('/', async (req, res) => {
+
+  res.render('homepage', {logged_in: req.session.logged_in});
+
 });
 
-router.get("/login", (req, res) => {
+router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    return res.redirect("/");
+    res.redirect('/');
+    return;
   }
-  res.render("login");
+  res.render('login');
 });
 
 module.exports = router;
