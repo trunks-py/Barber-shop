@@ -21,7 +21,7 @@ router.get('/services', async (req, res) => {
 router.get('/', async (req, res) => {
 
   res.render('homepage', {logged_in: req.session.logged_in});
-
+// extra comment
 });
 
 router.get('/login', (req, res) => {
